@@ -19,18 +19,20 @@ Write a C program to print even numbers ranging from M to N (including M and N v
 #include <stdio.h>
 
 int main() {
-    int M, N;
-    scanf("%d %d", &M, &N);
-    int start = (M > N) ? M : N;
-    int end = (M < N) ? M : N;
-    if (start % 2 != 0) {
-        start--;
+    int M, N, i;
+    scanf("%d", &M);
+    
+    scanf("%d", &N);
+    printf("Even numbers from %d to %d are:\n", M, N);
+    for (i = M; i <= N; i++) {
+        if (i % 2 == 0) {
+            printf("%d ", i);
+        }
     }
-    for (int i = start; i >= end; i -= 2) {
-        printf("%d ", i);
-    }
+
     return 0;
 }
+
 ```
 ## OUTPUT:
 ![Screenshot 2025-04-27 143813](https://github.com/user-attachments/assets/4b894ff2-7a26-44f2-a5e9-cc4558bad0d9)
@@ -107,30 +109,26 @@ Write a C program to perform addition and subtraction of two numbers using funct
 
 ## PROGRAM:
 ```
+#include <stdio.h>
 
-#include<stdio.h>
-int add(int,int);
-int sub(int,int);
-int main()
-{
-    int a,b,c,d;
-    scanf("%d%d",&a,&b);
-    c = add(a,b);
-    d = sub(a,b);
-    printf("Addition: %d\n",c);
-    printf("Subtraction: %d",d);
+void add(int a, int b) {
+    int sum = a + b;
+    printf("Addition: %d + %d = %d\n", a, b, sum);
 }
-int add(int x,int y)
-{
-    int z;
-    z = x + y;
-    return z;
+
+
+void subtract(int a, int b) {
+    int difference = a - b;
+    printf("Subtraction: %d - %d = %d\n", a, b, difference);
 }
-int sub(int x,int y)
-{
-    int z;
-    z = x - y;
-    return z;
+
+int main() {
+    int num1, num2;
+    scanf("%d %d", &num1, &num2);
+    add(num1, num2);
+    subtract(num1, num2);
+
+    return 0;
 }
 
 ```
@@ -215,18 +213,31 @@ d.	After the loop, print the factorial value.
 
 ## PROGRAM:
 ```
-#include<stdio.h>
-int main()
-{
-    int n,fact=1;
-    scanf("%d",&n);
-    for(int i=1;i<=n;i++)
-    {
-        fact*=i;
+#include <stdio.h>
+void factorial(int n) {
+    int i;
+    long long fact = 1;
+
+    for (i = 1; i <= n; i++) {
+        fact *= i;
     }
-    printf("Factorial value is: %d",fact);
+
+    printf("Factorial of %d is: %lld\n", n, fact);
+}
+
+int main() {
+    int num;
+    scanf("%d", &num);
+
+    if (num < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+    } else {
+        factorial(num); 
+    }
+
     return 0;
 }
+
 
 ```
 
